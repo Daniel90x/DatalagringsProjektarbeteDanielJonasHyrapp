@@ -8,15 +8,15 @@ namespace DatabaseConnection
 {
     public class API
     {
-        public static List<Movie> GetMovieSlice(int a, int b)
+        public static List<Movie> GetMovieSlice(int a, int b) // Söker de 30 första filmerna
         {
             using var ctx = new Context();
-            return ctx.Movies.OrderBy(m => m.Title).Skip(a).Take(b).ToList();
+            return ctx.Movies.OrderBy(m => m.Title).Skip(a).Take(b).ToList(); // Söker de 30 första filmerna, men hoppar över 0, för att det bara står text som titel och posters med mera
         }
-        public static Customer GetCustomerByName(string name)
+        public static Customer GetCustomerByName(string name) // Kallar efter namnen, inlogningsnamn
         {
             using var ctx = new Context();
-            return ctx.Customers.FirstOrDefault(c => c.Name.ToLower() == name.ToLower());
+            return ctx.Customers.FirstOrDefault(c => c.Name.ToLower() == name.ToLower()); // Ser till så att gör så att lösenordet inte är känsligt för stora och små bokstäver. ToLower
         }
         public static bool RegisterSale(Customer customer, Movie movie)
         {
@@ -31,7 +31,7 @@ namespace DatabaseConnection
                 ctx.Add(new Rental() { Date = DateTime.Now, Customer = customer, Movie = movie });
                 return ctx.SaveChanges() == 1;
             }
-            catch(DbUpdateException e)
+            catch(DbUpdateException e) // Se till att crasha
             {
                 System.Diagnostics.Debug.WriteLine(e.Message);
                 System.Diagnostics.Debug.WriteLine(e.InnerException.Message);

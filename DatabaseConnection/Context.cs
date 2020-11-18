@@ -9,7 +9,7 @@ namespace DatabaseConnection
         public DbSet<Movie> Movies { get; set; }
         public DbSet<Rental> Sales { get; set; }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) // Namnger och kopplar upp servern.
         {
             optionsBuilder
                 //.LogTo(s => System.Diagnostics.Debug.WriteLine(s))

@@ -12,12 +12,12 @@ namespace DatabaseConnection
         {
             using (var ctx = new Context())
             {
-                ctx.RemoveRange(ctx.Sales);
+                ctx.RemoveRange(ctx.Sales); // Tar bort data från Arreyn
                 ctx.RemoveRange(ctx.Movies);
                 ctx.RemoveRange(ctx.Customers);
 
                 ctx.AddRange(new List<Customer> {
-                    new Customer { Name = "Björn" },
+                    new Customer { Name = "Björn" }, // Lägger till personer med rättigheter för att logga in.
                     new Customer { Name = "Robin" },
                     new Customer { Name = "Kalle" },
                 });
@@ -36,7 +36,7 @@ namespace DatabaseConnection
                     try{ var test = new Uri(url); }
                     catch (Exception) { continue; }
 
-                    movies.Add(new Movie { Title = cells[2], ImageURL = url });
+                    movies.Add(new Movie { Title = cells[2], ImageURL = url }); // Tar titlen och postern från databasen.
                 }
                 ctx.AddRange(movies);
 
