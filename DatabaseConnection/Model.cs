@@ -16,7 +16,7 @@ namespace DatabaseConnection
         public string Title { get; set; }
         public string ImageURL { get; set; }
 
-        public double IMDB_Score { get; set; } // WiP
+        public string IMDB_Score { get; set; } // WiP
         public virtual List<Rental> Sales { get; set; } // Ger tillåtelse för rental
     }
     public class Rental

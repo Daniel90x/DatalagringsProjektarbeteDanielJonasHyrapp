@@ -32,7 +32,7 @@ namespace DatabaseConnection
 
                     var url = cells[5].Trim('"');  // Cell 5 är Poster som blir url..
 
-                    var ImdbScore = Convert.ToDouble(cells[3]);
+                    string ImdbScore =cells[3];
 
                     // var IMDB_Score = cells[3]; // Skapar en IMDB_Score variabel... WiP
 
