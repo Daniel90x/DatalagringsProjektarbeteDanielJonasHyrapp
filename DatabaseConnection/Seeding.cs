@@ -34,13 +34,13 @@ namespace DatabaseConnection
 
                     string ImdbScore =cells[3];
 
-                    // var IMDB_Score = cells[3]; // Skapar en IMDB_Score variabel... WiP
+                    // string Genre = cells[4]; 
 
                     // Hoppa över alla icke-fungerande url:er
                     try{ var test = new Uri(url); }
                     catch (Exception) { continue; }
 
-                    movies.Add(new Movie { Title = cells[2], ImageURL = url, IMDB_Score = ImdbScore }); // Tar titlen och postern från databasen.
+                    movies.Add(new Movie { Title = cells[2], ImageURL = url, IMDB_Score = ImdbScore, Genre = cells[4] }); // Tar titlen och postern från databasen.
                 }
                 ctx.AddRange(movies);
 
