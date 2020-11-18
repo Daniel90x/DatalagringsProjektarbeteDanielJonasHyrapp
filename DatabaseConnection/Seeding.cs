@@ -32,11 +32,15 @@ namespace DatabaseConnection
 
                     var url = cells[5].Trim('"');  // Cell 5 är Poster som blir url..
 
+                    var ImdbScore = Convert.ToDouble(cells[3]);
+
+                    // var IMDB_Score = cells[3]; // Skapar en IMDB_Score variabel... WiP
+
                     // Hoppa över alla icke-fungerande url:er
                     try{ var test = new Uri(url); }
                     catch (Exception) { continue; }
 
-                    movies.Add(new Movie { Title = cells[2], ImageURL = url }); // Tar titlen och postern från databasen.
+                    movies.Add(new Movie { Title = cells[2], ImageURL = url, IMDB_Score = ImdbScore }); // Tar titlen och postern från databasen.
                 }
                 ctx.AddRange(movies);
 
