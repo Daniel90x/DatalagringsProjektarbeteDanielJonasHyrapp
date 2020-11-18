@@ -30,7 +30,7 @@ namespace DatabaseConnection
                     // imdbId,Imdb Link,Title,IMDB Score,Genre,Poster
                     var cells = lines[i].Split(',');
 
-                    var url = cells[5].Trim('"');
+                    var url = cells[5].Trim('"');  // Cell 5 är Poster som blir url..
 
                     // Hoppa över alla icke-fungerande url:er
                     try{ var test = new Uri(url); }
