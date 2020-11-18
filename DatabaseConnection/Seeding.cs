@@ -40,7 +40,7 @@ namespace DatabaseConnection
                     try{ var test = new Uri(url); }
                     catch (Exception) { continue; }
 
-                    movies.Add(new Movie { Title = cells[2], ImageURL = url, IMDB_Score = ImdbScore, Genre = cells[4], ImdbUrl = cells[1] }); // Tar titlen och postern från databasen.
+                    movies.Add(new Movie { Title = cells[2], ImageURL = url, IMDB_Score = ImdbScore, Genre = cells[4], ImdbUrl = cells[1] }); // Tar titel, genre med mera och skickar till databasen.
                 }
                 ctx.AddRange(movies);
 
