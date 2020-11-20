@@ -17,6 +17,20 @@ namespace DatabaseConnection
         {
             using var ctx = new Context();
             return ctx.Customers.FirstOrDefault(c => c.Name.ToLower() == name.ToLower()); // Ser till så att gör så att lösenordet inte är känsligt för stora och små bokstäver. ToLower
+
+        }
+
+        /*public static Customer GetPasswordByEmail(string email) 
+        {
+            using var ctx = new Context();
+            return ctx.Customers.;
+        }*/
+
+        public static Customer GetCustomer(string email, string password) 
+        {
+            using var ctx = new Context();
+            var user = ctx.Customers.FirstOrDefault(c => c.Email == email && c.Password == password);
+            return user;
         }
         public static bool RegisterSale(Customer customer, Movie movie)
         {

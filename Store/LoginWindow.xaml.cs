@@ -25,16 +25,19 @@ namespace Store
 
         private void LogIn_Click(object sender, RoutedEventArgs e)
         {
-            State.User = API.GetCustomerByName(NameField.Text.Trim());
+            State.User = API.GetCustomer(Email.Text.Trim(), Password.Text.Trim());
             if (State.User != null)
             {
                 var next_window = new MainWindow();
                 next_window.Show();
                 this.Close();
+                
             }
             else
             {
-                NameField.Text = "...";
+                Authenticated.Content = "Wrong email or password";
+                Email.Text = "Email";
+                Password.Text = "Password";
             }
         }
     }

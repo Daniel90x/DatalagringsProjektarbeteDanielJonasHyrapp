@@ -16,10 +16,17 @@ namespace DatabaseConnection
                 ctx.RemoveRange(ctx.Movies);
                 ctx.RemoveRange(ctx.Customers);
 
+                //DEBUGGING
+                //API.GetCustomer("test@test.com", "123333");
+                //API.GetCustomer("test@test.com", "123");
+                //API.GetCustomer("test2@test.com", "321");
+                //API.GetCustomer("test3@test.com", null);
+                //Console.ReadLine();
+
                 ctx.AddRange(new List<Customer> {
-                    new Customer { Name = "Björn" , Email = "test@test.com"}, // Lägger till personer med rättigheter för att logga in
-                    new Customer { Name = "Robin" , Email = "test@test.com"},
-                    new Customer { Name = "Kalle" },
+                    new Customer { Name = "Björn" , Email = "test@test.com", Password = "123", PhoneNumber = 087020090}, // Lägger till personer med rättigheter för att logga in
+                    new Customer { Name = "Robin" , Email = "test2@test.com", Password = "321", PhoneNumber = 061233152},
+                    new Customer { Name = "Kalle",  Email = "test3@test.com", PhoneNumber = 061233526},
                 });
 
                 // Här laddas data in från SeedData foldern för att fylla ut Movies tabellen
@@ -32,7 +39,7 @@ namespace DatabaseConnection
 
                     var url = cells[5].Trim('"');  // Cell 5 är Poster som blir url..
 
-                    string ImdbScore =cells[3]; // Cell 3 visar imdbscore...
+                    string ImdbScore = cells[3]; // Cell 3 visar imdbscore...
 
                     // string Genre = cells[4]; 
 
