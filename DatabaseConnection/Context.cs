@@ -24,6 +24,7 @@ namespace DatabaseConnection
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            //modelBuilder.Entity<Customer>().       //.HasIndex(c => new { c.Email }).IsUnique();
         }
     }
 }

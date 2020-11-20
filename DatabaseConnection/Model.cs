@@ -8,6 +8,8 @@ namespace DatabaseConnection
     {
         public int Id { get; set; }
         public string Name { get; set; }
+        public string Email { get; set; }  //Fråga björn om att göra denna unique       public string Password { get; set; }
+        public int PhoneNumber { get; set; }
         public virtual List<Rental> Sales { get; set; } // Ger tillåtelse för rental
     }
     public class Movie // Movie är däremot ganska bra
