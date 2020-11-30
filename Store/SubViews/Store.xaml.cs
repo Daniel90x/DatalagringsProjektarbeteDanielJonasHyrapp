@@ -10,12 +10,15 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace Store {
+namespace Store.SubViews
+{
     /// <summary>
-    /// Interaction logic for Lek.xaml
+    /// Interaction logic for Store.xaml
     /// </summary>
-    public partial class Lek : Window {
-        public Lek() {
+    public partial class Store : Window
+    {
+        public Store()
+        {
             InitializeComponent();
         }
     }

@@ -9,6 +9,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Store.SubViews;
 
 namespace Store
 {
@@ -21,5 +22,34 @@ namespace Store
         {
             InitializeComponent();
         }
+
+        private void GoHome_Click(object sender, RoutedEventArgs e)
+        {
+            Title.Content = "Home";
+            Home.Visibility = Visibility.Visible;
+            MyPage.Visibility = Visibility.Hidden;
+            Store.Visibility = Visibility.Hidden;
+        }
+
+        private void GoMyPage_Click(object sender, RoutedEventArgs e)
+        {
+            Title.Content = "My Page";
+            Home.Visibility = Visibility.Hidden;
+            MyPage.Visibility = Visibility.Visible;
+            Store.Visibility = Visibility.Hidden;
+        }
+
+        private void GoStore_Click(object sender, RoutedEventArgs e)
+        {
+            Title.Content = "Store";
+            Home.Visibility = Visibility.Hidden;
+            MyPage.Visibility = Visibility.Hidden;
+            Store.Visibility = Visibility.Visible;
+
+
+
+
+        }
     }
+
 }
