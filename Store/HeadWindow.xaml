@@ -40,10 +40,21 @@
 
         </Grid>
 
-
-        <Grid Name="Grid_Store" Grid.Column="1" Grid.Row="1">
-         
+        <ScrollViewer Name="TableContent" Grid.Column="1" Grid.Row="1">
+            <Grid Name="Grid_Store" Grid.Column="1" Grid.Row="1">
+            
+                <Grid.RowDefinitions>
+               
+                    <RowDefinition Height="70"></RowDefinition>
+                <RowDefinition Height="70"></RowDefinition>
+                <RowDefinition Height="70"></RowDefinition>
+                <RowDefinition Height="70"></RowDefinition>
+                <RowDefinition Height="70"></RowDefinition>
+               
+            </Grid.RowDefinitions>
+               
         </Grid>
+        </ScrollViewer>
 
 
     </Grid>
