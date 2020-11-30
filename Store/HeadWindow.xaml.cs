@@ -10,16 +10,21 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace Store.SubViews
+namespace Store
 {
     /// <summary>
-    /// Interaction logic for Store.xaml
+    /// Interaction logic for HeadWindow.xaml
     /// </summary>
-    public partial class Store : Window
+    public partial class HeadWindow : Window
     {
-        public Store()
+        public HeadWindow()
         {
             InitializeComponent();
+        }
+
+        private void GoMyPage_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
