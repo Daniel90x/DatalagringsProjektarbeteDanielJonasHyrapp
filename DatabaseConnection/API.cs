@@ -13,18 +13,20 @@ namespace DatabaseConnection
             using var ctx = new Context();
             return ctx.Movies.OrderBy(m => m.Title).Skip(a).Take(b).ToList(); // Söker de 30 första filmerna, men hoppar över 0, för att det bara står text som titel och posters med mera
         }
-        public static Customer GetCustomerByName(string name) // Kallar efter namnen, inlogningsnamn
+
+        public static List<Movie> GetMovies() {
+            using (var ctx = new Context()) {
+                var query = ctx.Movies.OrderBy(m => m.Title);
+                return query.ToList();
+            }
+        }
+
+    public static Customer GetCustomerByName(string name) // Kallar efter namnen, inlogningsnamn
         {
             using var ctx = new Context();
             return ctx.Customers.FirstOrDefault(c => c.Name.ToLower() == name.ToLower()); // Ser till så att gör så att lösenordet inte är känsligt för stora och små bokstäver. ToLower
 
         }
-
-        /*public static Customer GetPasswordByEmail(string email) 
-        {
-            using var ctx = new Context();
-            return ctx.Customers.;
-        }*/
 
         public static Customer GetCustomer(string email, string password) 
         {
