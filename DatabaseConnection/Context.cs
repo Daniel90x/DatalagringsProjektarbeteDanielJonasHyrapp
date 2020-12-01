@@ -13,7 +13,7 @@ namespace DatabaseConnection
         {
             optionsBuilder
                 //.LogTo(s => System.Diagnostics.Debug.WriteLine(s))
-                .UseLazyLoadingProxies()
+                //.UseLazyLoadingProxies()
                 .UseSqlServer(
                 @"server=.\SQLExpress;" +
                 @"database=SaleDatabase;" +
@@ -24,7 +24,7 @@ namespace DatabaseConnection
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            //modelBuilder.Entity<Customer>().       //.HasIndex(c => new { c.Email }).IsUnique();
+            
         }
     }
 }
