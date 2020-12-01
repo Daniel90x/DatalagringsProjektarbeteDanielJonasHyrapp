@@ -24,11 +24,11 @@ namespace Store
             InitializeComponent();
 
             State.Movies = API.GetMovieSlice(0, 25); // 0 = är vilken film som visas först och 30 = hur många filmer som visas i tabellen.
-            for (int y = 0; y < Grid_Store.RowDefinitions.Count; y++)
+            for (int y = 0; y < Grid_Home.RowDefinitions.Count; y++)
             {
-                for (int x = 0; x < Grid_Store.ColumnDefinitions.Count; x++)
+                for (int x = 0; x < Grid_Home.ColumnDefinitions.Count; x++)
                 {
-                    int i = y * Grid_Store.ColumnDefinitions.Count + x;
+                    int i = y * Grid_Home.ColumnDefinitions.Count + x;
                     if (i < State.Movies.Count)
                     {
                         var movie = State.Movies[i];
@@ -44,7 +44,7 @@ namespace Store
                             //image.Height = 120;
                             image.Margin = new Thickness(4, 4, 4, 4);
 
-                            Grid_Store.Children.Add(image); // placerar ut bilderna i griden
+                            Grid_Home.Children.Add(image); // placerar ut bilderna i griden
                             Grid.SetRow(image, y);
                             Grid.SetColumn(image, x);
                         }
@@ -107,17 +107,26 @@ namespace Store
 
         private void GoMyPage_Click(object sender, RoutedEventArgs e)
         {
-
+            Title.Content = "My Page";
+            Grid_Home.Visibility = Visibility.Hidden;
+            Grid_My_Page.Visibility = Visibility.Visible;
+            Grid_Store.Visibility = Visibility.Hidden;
         }
 
         private void GoStore_Click(object sender, RoutedEventArgs e)
         {
-
+            Title.Content = "Store";
+            Grid_Home.Visibility = Visibility.Hidden;
+            Grid_My_Page.Visibility = Visibility.Hidden;
+            Grid_Store.Visibility = Visibility.Visible;
         }
 
         private void GoHome_Click(object sender, RoutedEventArgs e)
         {
-
+            Title.Content = "Home";
+            Grid_Home.Visibility = Visibility.Visible;
+            Grid_My_Page.Visibility = Visibility.Hidden;
+            Grid_Store.Visibility = Visibility.Hidden;
         }
     }
 }

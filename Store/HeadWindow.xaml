@@ -30,36 +30,38 @@
             <Button Height="100" Margin="0,0,0,10" Click="GoStore_Click">Store   </Button>
         </StackPanel>
 
-        <Grid Name="Grid_Home" Grid.Column="1" Grid.Row="1">
 
+        <ScrollViewer Name="HomeScroll" Grid.Column="1" Grid.Row="1">
+            <Grid Name="Grid_Home" Background="RED" ShowGridLines="True" Grid.Column="1" Grid.Row="1" Visibility="Visible">
+            <Grid.RowDefinitions>
+
+                <RowDefinition Height="100"></RowDefinition>
+                <RowDefinition Height="100"></RowDefinition>
+                <RowDefinition Height="100"></RowDefinition>
+                <RowDefinition Height="100"></RowDefinition>
+                <RowDefinition Height="100"></RowDefinition>
+
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
         </Grid>
+        </ScrollViewer>
 
 
-
-        <Grid Name="Grid_My_Page" Grid.Column="1" Grid.Row="1">
+        <Grid Name="Grid_My_Page" Background="WHITE" Grid.Column="1" Grid.Row="1" Visibility="Hidden">
 
         </Grid>
 
         <ScrollViewer Name="TableContent" Grid.Column="1" Grid.Row="1">
-            <Grid Name="Grid_Store" Background="RED" ShowGridLines="True" Grid.Column="1" Grid.Row="1">
+            <Grid Name="Grid_Store" Background="BLUE" ShowGridLines="True" Grid.Column="1" Grid.Row="1" Visibility="Hidden">
             
-                <Grid.RowDefinitions>
-               
-                    <RowDefinition Height="100"></RowDefinition>
-                <RowDefinition Height="100"></RowDefinition>
-                <RowDefinition Height="100"></RowDefinition>
-                <RowDefinition Height="100"></RowDefinition>
-                <RowDefinition Height="100"></RowDefinition>
-               
-            </Grid.RowDefinitions>
-
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition />
-                    <ColumnDefinition />
-                    <ColumnDefinition />
-                    <ColumnDefinition />
-                    <ColumnDefinition />
-                </Grid.ColumnDefinitions>
+                
             </Grid>
         </ScrollViewer>
 
