@@ -18,16 +18,16 @@
 
         <Ellipse Grid.Column="0" Grid.Row="0">
             <Ellipse.Fill>
-        <ImageBrush ImageSource="Images/SF Anytime.png" Stretch="UniformToFill"></ImageBrush>
+        <ImageBrush ImageSource="images/sf_anytime.png" Stretch="UniformToFill"></ImageBrush>
                 </Ellipse.Fill>
         </Ellipse>
 
         <Label Grid.Column="1" Grid.Row="0" Name="Title" Content="Home" FontSize="40" HorizontalContentAlignment="Center"></Label>
 
         <StackPanel Grid.Column="0" Grid.Row="1" Margin="20">
-            <Button Height="100" Margin="0,0,0,10" Click="GoHome_Click">Home</Button>
-            <Button Height="100" Margin="0,0,0,10" Click="GoMyPage_Click">My Page</Button>
-            <Button Height="100" Margin="0,0,0,10" Click="GoStore_Click">Store</Button>
+            <Button Height="100" Margin="0,0,0,10" Click="GoHome_Click">Home </Button>
+            <Button Height="100" Margin="0,0,0,10" Click="GoMyPage_Click">My Page  </Button>
+            <Button Height="100" Margin="0,0,0,10" Click="GoStore_Click">Store   </Button>
         </StackPanel>
 
         <Grid Name="Grid_Home" Grid.Column="1" Grid.Row="1">
@@ -41,7 +41,7 @@
         </Grid>
 
         <ScrollViewer Name="TableContent" Grid.Column="1" Grid.Row="1">
-            <Grid Name="Grid_Store" Grid.Column="1" Grid.Row="1">
+            <Grid Name="Grid_Store" Background="RED" ShowGridLines="True" Grid.Column="1" Grid.Row="1">
             
                 <Grid.RowDefinitions>
                

@@ -28,7 +28,7 @@ namespace Store
             State.User = API.GetCustomer(Email.Text.Trim(), Password.Text.Trim());
             if (State.User != null)
             {
-                var next_window = new MainWindow();
+                var next_window = new HeadWindow(); // Ändrar om MainWindow till HeadWindow
                 next_window.Show();
                 this.Close();
                 
