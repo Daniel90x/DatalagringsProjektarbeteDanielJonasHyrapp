@@ -37,11 +37,13 @@ namespace Store
                         {
                             var image = new Image() { };
                             image.Cursor = Cursors.Hand; // Gör så att pekarn blir till en hand när den håller över filmernas posters
-                            //image.MouseUp += Image_MouseUp;
+                            image.MouseUp += Image_MouseUp;
                             image.HorizontalAlignment = HorizontalAlignment.Center; // WiP Center avgör placering, kunde ha annat som .right; eller .left; eller .strech;
                             image.VerticalAlignment = VerticalAlignment.Center; // WiP center avgör placering, finns .top; och .bottom; med
                             image.Source = new BitmapImage(new Uri(movie.ImageURL)); // ImageURL Kom ihåg, kallar på bild
                             //image.Height = 120;
+                            //image.Width = 130;
+                            //image.Stretch = "UniformToFill"; 
                             image.Margin = new Thickness(4, 4, 4, 4);
 
                             Grid_Home.Children.Add(image); // placerar ut bilderna i griden
@@ -84,6 +86,21 @@ namespace Store
             Grid_Home.Visibility = Visibility.Visible;
             Grid_My_Page.Visibility = Visibility.Hidden;
             Grid_Store.Visibility = Visibility.Hidden;
+        }
+
+        //Hyra film
+        private void Image_MouseUp(object sender, MouseButtonEventArgs e) // Känner av vad användaren klickar på
+        {
+            var x = Grid.GetColumn(sender as UIElement);
+            var y = Grid.GetRow(sender as UIElement);
+
+            int i = y * Grid_Home.ColumnDefinitions.Count + x;
+            State.Pick = State.Movies[i];
+
+            if (API.RegisterSale(State.User, State.Pick))
+                MessageBox.Show("Purchase complete!","Purchase complete!", MessageBoxButton.OK, MessageBoxImage.Information);
+            else
+                MessageBox.Show("An error happened while buying the movie, please try again at a later time.", "Sale Failed!", MessageBoxButton.OK, MessageBoxImage.Exclamation);
         }
     }
 }
