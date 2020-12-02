@@ -32,7 +32,7 @@
         </StackPanel>
 
 
-        <ScrollViewer Name="Home_Scroll" Grid.Column="1" Grid.Row="1" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto" Visibility="Hidden">
+        <ScrollViewer Name="Home_Scroll" Grid.Column="1" Grid.Row="1" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto" Visibility="Visible">
             <Grid Name="Grid_Home" Background="RED" ShowGridLines="False" Grid.Column="1" Grid.Row="1"  >
                 <Grid.RowDefinitions>
                     <RowDefinition></RowDefinition>
@@ -119,8 +119,6 @@
                 </Grid.RowDefinitions>
 
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="200"/>
-                    <ColumnDefinition Width="200"/>
                     <ColumnDefinition Width="200"/>
                     <!--<ColumnDefinition />
                     <ColumnDefinition />-->

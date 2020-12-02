@@ -30,10 +30,18 @@ namespace Store
             if (State.User != null)
             {
                 var next_window = new HeadWindow(); // Ändrar om MainWindow till HeadWindow
-                //var next_window = new MainWindow(); // Ändrar om MainWindow till HeadWindow
-                //next_window.Load_Home();
+                                                    //var next_window = new MainWindow(); // Ändrar om MainWindow till HeadWindow
+                                                    //next_window.Load_Home();
+                next_window.Load_Store("Action", 1);
+                next_window.Load_Store("Drama", 3);
+                next_window.Load_Store("Adventure", 5);
+                next_window.Load_Store("Comedy", 7);
+                next_window.Load_Store("Family", 9);
+                next_window.Load_Store("Animation", 11);
+                next_window.Load_Store("Romance", 13);
+
                 next_window.Show();
-                next_window.Load_MyPage(State.User);
+                
                 this.Close();
                 
             }
