@@ -50,7 +50,7 @@ namespace Store
         }
 
         public void Load_Home() {
-            State.Movies = API.GetMovieSlice(25); // 0 = är vilken film som visas först och 30 = hur många filmer som visas i tabellen.
+            State.Movies = API.GetMovieSlice(15); // 0 = är vilken film som visas först och 30 = hur många filmer som visas i tabellen.
             for (int y = 0; y < Grid_Home.RowDefinitions.Count; y++) {
                 for (int x = 0; x < Grid_Home.ColumnDefinitions.Count; x++) {
                     int i = y * Grid_Home.ColumnDefinitions.Count + x;
@@ -64,8 +64,9 @@ namespace Store
                             image.HorizontalAlignment = HorizontalAlignment.Center; // WiP Center avgör placering, kunde ha annat som .right; eller .left; eller .strech;
                             image.VerticalAlignment = VerticalAlignment.Center; // WiP center avgör placering, finns .top; och .bottom; med
                             image.Source = new BitmapImage(new Uri(movie.ImageURL)); // ImageURL Kom ihåg, kallar på bild
+
                             image.Height = 200;
-                            image.Width = 130;
+                            image.Width = 150;
                             image.Stretch = Stretch.Fill;
                             image.Margin = new Thickness(2, 2, 2, 2);
 
