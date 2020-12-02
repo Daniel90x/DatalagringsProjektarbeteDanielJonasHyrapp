@@ -152,18 +152,15 @@ namespace Store {
             State.User = customer;
             int userID = State.User.Id;
             State.Sales = API.GetSales(State.User);
-            var string_date = new Label();
+            //var string_date = new Label();
             var current_time = DateTime.Now;
+            var string_date = new Label();
 
             foreach (var sale in State.Sales) {
+                string_date = new Label();
                 var time_difference = (sale.Date.ToLocalTime() - current_time);
                 if (time_difference.Seconds > 0) {
                     State.Movies = API.GetSaleMovies(State.User);
-                    foreach (var e in State.Movies) {
-                        MessageBox.Show(e.Title.ToString(), "Purchase complete!", MessageBoxButton.OK, MessageBoxImage.Information);
-                        break;
-                    }
-
                     try {
                         //sale.Date.ToString()
                         //MessageBox.Show(time_difference.ToString(), "Purchase complete!", MessageBoxButton.OK, MessageBoxImage.Information);
@@ -270,9 +267,14 @@ namespace Store {
             var y = Grid.GetRow(sender as UIElement);
 
             int i = y * Grid_Home.ColumnDefinitions.Count + x;
-            
-            State.Pick = State.Movies[i];
-            MessageBox.Show(i.ToString(), "Purchase complete!", MessageBoxButton.OK, MessageBoxImage.Information);
+
+            try {
+                State.Pick = State.Movies[i];
+            } catch (System.ArgumentOutOfRangeException) {
+                //
+            }
+
+                //System.ArgumentOutOfRangeException
             if (API.RegisterSale(State.User, State.Pick))
                 MessageBox.Show("Purchase complete!","Purchase complete!", MessageBoxButton.OK, MessageBoxImage.Information);
             else

@@ -52,6 +52,7 @@ namespace DatabaseConnection
         }
         public static bool RegisterSale(Customer customer, Movie movie)
         {
+            DateTime current_time = DateTime.Now;
             using var ctx = new Context();
             try
             {
@@ -59,7 +60,7 @@ namespace DatabaseConnection
                 // Om jag inte gör detta så kommer den att försöka updatera databasens Id och cracha.
                 ctx.Entry(customer).State = EntityState.Unchanged;
                 ctx.Entry(movie).State = EntityState.Unchanged;
-                DateTime current_time = DateTime.Now;
+                
 
                 ctx.Add(new Rental() { Date = current_time.AddDays(7), Customer = customer, Movie = movie });
                 return ctx.SaveChanges() == 1;
