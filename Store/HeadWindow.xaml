@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Store"
         mc:Ignorable="d"
-        Title="HeadWindow" Height="450" Width="800">
+        ResizeMode="NoResize"
+        Title="Hyrflix" Height="768" Width="1024">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="70"></RowDefinition>
@@ -34,11 +35,13 @@
         <ScrollViewer Name="HomeScroll" Grid.Column="1" Grid.Row="1" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto">
             <Grid Name="Grid_Home" Background="RED" ShowGridLines="False" Grid.Column="1" Grid.Row="1" Visibility="Visible" >
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="100"></RowDefinition>
-                    <RowDefinition Height="100"></RowDefinition>
-                    <RowDefinition Height="100"></RowDefinition>
-                    <RowDefinition Height="100"></RowDefinition>
-                    <RowDefinition Height="100"></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
                 </Grid.RowDefinitions>
 
                 <Grid.ColumnDefinitions>

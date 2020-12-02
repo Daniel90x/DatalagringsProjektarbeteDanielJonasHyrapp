@@ -8,10 +8,10 @@ namespace DatabaseConnection
 {
     public class API
     {
-        public static List<Movie> GetMovieSlice(int a, int b) // Söker de 30 första filmerna
+        public static List<Movie> GetMovieSlice(int a) // Söker de 30 första filmerna
         {
             using var ctx = new Context();
-            return ctx.Movies.OrderBy(m => m.Title).Skip(a).Take(b).ToList(); // Söker de 30 första filmerna, men hoppar över 0, för att det bara står text som titel och posters med mera
+            return ctx.Movies.OrderBy(m => Guid.NewGuid()).Take(a).ToList(); // Söker de 30 första filmerna, men hoppar över 0, för att det bara står text som titel och posters med mera
         }
 
         public static List<Movie> GetMovies() {
