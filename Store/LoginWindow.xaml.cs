@@ -25,7 +25,7 @@ namespace Store
 
         private void LogIn_Click(object sender, RoutedEventArgs e)
         {
-            State.User = API.GetCustomer(Email.Text.Trim(), Password.Text);
+            State.User = API.GetCustomer(Email.Text.Trim(), Password.Password.ToString());
             if (State.User != null)
             {
                 var next_window = new HeadWindow(); // Ändrar om MainWindow till HeadWindow
@@ -38,7 +38,7 @@ namespace Store
             {
                 Authenticated.Content = "Wrong email or password!";
                 Email.Text = "Email";
-                Password.Text = "Password";
+                //Password.Text = "Password";
             }
         }
     }
