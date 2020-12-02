@@ -46,11 +46,11 @@ namespace Store
             Home_Scroll.Visibility = Visibility.Visible;
             Grid_My_Page.Visibility = Visibility.Hidden;
             Store_Scroll.Visibility = Visibility.Hidden;
-            Load_Home();
+            //Load_Home();
         }
 
         public void Load_Home() {
-            State.Movies = API.GetMovieSlice(15); // 0 = är vilken film som visas först och 30 = hur många filmer som visas i tabellen.
+            State.Movies = API.GetMovieSlice(30); // 0 = är vilken film som visas först och 30 = hur många filmer som visas i tabellen.
             for (int y = 0; y < Grid_Home.RowDefinitions.Count; y++) {
                 for (int x = 0; x < Grid_Home.ColumnDefinitions.Count; x++) {
                     int i = y * Grid_Home.ColumnDefinitions.Count + x;
