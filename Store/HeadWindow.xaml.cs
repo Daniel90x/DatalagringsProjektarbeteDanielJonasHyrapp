@@ -152,30 +152,38 @@ namespace Store {
             State.User = customer;
             int userID = State.User.Id;
             State.Sales = API.GetSales(State.User);
+            var string_date = new Label();
+            var current_time = DateTime.Now;
 
             foreach (var sale in State.Sales) {
-                try {
-                    //sale.Date.ToString()
-                    var string_date = new Label();
-                    var current_time = DateTime.Now;
-                    var time_difference = (sale.Date.ToLocalTime() - current_time);
-                    //MessageBox.Show(time_difference.ToString(), "Purchase complete!", MessageBoxButton.OK, MessageBoxImage.Information);
-                    if (time_difference.Seconds > 0) { 
-                        //MessageBox.Show(time_difference.ToString(), "Purchase complete!", MessageBoxButton.OK, MessageBoxImage.Information);
-                        string_date.Content = "Tid kvar:\n" + time_difference.ToString();
-                        string_date.HorizontalContentAlignment = HorizontalAlignment.Left;
-                        string_date.VerticalContentAlignment = VerticalAlignment.Center;
-                        Grid_My_Page.Children.Add(string_date);
-                        Grid.SetRow(string_date, 1);
-                        Grid.SetColumn(string_date, y);
-                        y += 1;
+                var time_difference = (sale.Date.ToLocalTime() - current_time);
+                if (time_difference.Seconds > 0) {
+                    State.Movies = API.GetSaleMovies(State.User);
+                    foreach (var e in State.Movies) {
+                        MessageBox.Show(e.Title.ToString(), "Purchase complete!", MessageBoxButton.OK, MessageBoxImage.Information);
+                        break;
                     }
-                } catch (Exception e) when // Undviker från att crasha om tidigare kod inte fungerar.
-                  (e is ArgumentNullException ||
-                   e is System.IO.FileNotFoundException ||
-                   e is UriFormatException) {
-                    continue; // Låter programmet köra vidare
 
+                    try {
+                        //sale.Date.ToString()
+                        //MessageBox.Show(time_difference.ToString(), "Purchase complete!", MessageBoxButton.OK, MessageBoxImage.Information);
+                        if (time_difference.Seconds > 0) {
+                            //MessageBox.Show(time_difference.ToString(), "Purchase complete!", MessageBoxButton.OK, MessageBoxImage.Information);
+                            string_date.Content = "Tid kvar:\n" + time_difference.ToString();
+                            string_date.HorizontalContentAlignment = HorizontalAlignment.Left;
+                            string_date.VerticalContentAlignment = VerticalAlignment.Center;
+                            Grid_My_Page.Children.Add(string_date);
+                            Grid.SetRow(string_date, 1);
+                            Grid.SetColumn(string_date, y);
+                            y += 1;
+                        }
+                    } catch (Exception e) when // Undviker från att crasha om tidigare kod inte fungerar.
+                      (e is ArgumentNullException ||
+                       e is System.IO.FileNotFoundException ||
+                       e is UriFormatException) {
+                        continue; // Låter programmet köra vidare
+
+                    }
                 }
             }
             
@@ -262,8 +270,9 @@ namespace Store {
             var y = Grid.GetRow(sender as UIElement);
 
             int i = y * Grid_Home.ColumnDefinitions.Count + x;
+            
             State.Pick = State.Movies[i];
-
+            MessageBox.Show(i.ToString(), "Purchase complete!", MessageBoxButton.OK, MessageBoxImage.Information);
             if (API.RegisterSale(State.User, State.Pick))
                 MessageBox.Show("Purchase complete!","Purchase complete!", MessageBoxButton.OK, MessageBoxImage.Information);
             else
