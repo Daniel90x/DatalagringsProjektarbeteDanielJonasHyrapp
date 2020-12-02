@@ -8,8 +8,8 @@
         Title="LoginWindow" Height="450" Width="800">
     <Grid>
         <Label Content="Enter Your Name" HorizontalAlignment="Center" Margin="0,108,0,0" VerticalAlignment="Top"/>
-        <TextBox Name="Email" HorizontalAlignment="Center" Margin="0,184,0,0" Text="Email" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBox Name="Password" HorizontalAlignment="Center" Margin="0,210,0,0" Text="Password" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox Name="Email" HorizontalAlignment="Center" Margin="0,184,0,0" Text="test@test.com" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox Name="Password" HorizontalAlignment="Center" Margin="0,210,0,0" Text="123" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         
         <!--  
         <PasswordBox Name="Password" HorizontalAlignment="Center" Margin="0,210,0,0" Text="Password" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
