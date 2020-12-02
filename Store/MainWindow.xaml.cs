@@ -25,7 +25,7 @@ namespace Store
         {
             InitializeComponent();
 
-            State.Movies = API.GetMovieSlice(0, 30); // 0 = är vilken film som visas först och 30 = hur många filmer som visas i tabellen.
+            State.Movies = API.GetMovieSlice(30); // 0 = är vilken film som visas först och 30 = hur många filmer som visas i tabellen.
             for (int y = 0; y < MovieGrid.RowDefinitions.Count; y++)
             {
                 for (int x = 0; x < MovieGrid.ColumnDefinitions.Count; x++)

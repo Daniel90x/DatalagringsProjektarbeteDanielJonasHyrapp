@@ -26,11 +26,14 @@ namespace Store
         private void LogIn_Click(object sender, RoutedEventArgs e)
         {
             State.User = API.GetCustomer(Email.Text.Trim(), Password.Password.ToString());
+
             if (State.User != null)
             {
                 var next_window = new HeadWindow(); // Ändrar om MainWindow till HeadWindow
                 //var next_window = new MainWindow(); // Ändrar om MainWindow till HeadWindow
+                next_window.Load_Home();
                 next_window.Show();
+                
                 this.Close();
                 
             }
