@@ -13,7 +13,7 @@ namespace DatabaseConnection
             using (var ctx = new Context())
             {
                 ctx.RemoveRange(ctx.Sales); // Tar bort data från Arreyn
-                //ctx.RemoveRange(ctx.Movies);
+                ctx.RemoveRange(ctx.Movies);
                 ctx.RemoveRange(ctx.Customers);
 
                 //DEBUGGING

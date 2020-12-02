@@ -35,7 +35,7 @@ namespace Store
             }
             else
             {
-                Authenticated.Content = "Wrong email or password";
+                Authenticated.Content = "Wrong email or password!";
                 Email.Text = "Email";
                 Password.Text = "Password";
             }

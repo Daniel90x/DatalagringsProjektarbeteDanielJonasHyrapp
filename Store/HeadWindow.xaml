@@ -31,8 +31,8 @@
         </StackPanel>
 
 
-        <ScrollViewer Name="HomeScroll" Grid.Column="1" Grid.Row="1">
-            <Grid Name="Grid_Home" Background="RED" ShowGridLines="True" Grid.Column="1" Grid.Row="1" Visibility="Visible">
+        <ScrollViewer Name="HomeScroll" Grid.Column="1" Grid.Row="1" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto">
+            <Grid Name="Grid_Home" Background="RED" ShowGridLines="False" Grid.Column="1" Grid.Row="1" Visibility="Visible" >
                 <Grid.RowDefinitions>
                     <RowDefinition Height="100"></RowDefinition>
                     <RowDefinition Height="100"></RowDefinition>
@@ -56,12 +56,9 @@
 
         </Grid>
 
-        <ScrollViewer Name="StoreScroll" Grid.Column="1" Grid.Row="1">
-            <Grid Name="Grid_Store" Background="BLUE" ShowGridLines="True" Grid.Column="1" Grid.Row="1" Visibility="Hidden">
+        <Grid Name="Grid_Store" Background="BLUE" ShowGridLines="True" Grid.Column="1" Grid.Row="1" Visibility="Hidden">
 
-            </Grid>
-        </ScrollViewer>
-
+        </Grid>
 
 
     </Grid>
