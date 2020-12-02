@@ -29,6 +29,7 @@ namespace DatabaseConnection
     {
         public int Id { get; set; }
         public DateTime Date { get; set; }
+
         public virtual Customer Customer { get; set; } // Kallar på Customer
         public virtual Movie Movie { get; set; } // Kallar på Movie
     }

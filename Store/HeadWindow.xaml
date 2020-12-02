@@ -54,7 +54,7 @@
             </Grid>
         </ScrollViewer>
 
-        <!-- Ingen Scroll på my page -->
+        <ScrollViewer Name="My_Page_Scroll" Grid.Column="1" Grid.Row="1" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto" Visibility="Hidden">
         <Grid Name="Grid_My_Page" Background="WHITE" ShowGridLines="True" Grid.Column="1" Grid.Row="1" Visibility="Visible">
             <Border Grid.Column="0" Grid.Row="0">
                 <TextBlock Text="Tillgängliga:" FontSize="20"  HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0" />
@@ -69,19 +69,15 @@
                 <RowDefinition Height="100"/>
             </Grid.RowDefinitions>
 
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Name="Test"/>
-                <ColumnDefinition />
-                <ColumnDefinition />
-                <ColumnDefinition />
-                <ColumnDefinition />
-                <ColumnDefinition />
-            </Grid.ColumnDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="200"/>
 
-        </Grid>
+                </Grid.ColumnDefinitions>
+            </Grid>
+        </ScrollViewer>
 
 
-        <ScrollViewer Name="Store_Scroll" Grid.Column="1" Grid.Row="1" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto" Visibility="Visible">
+        <ScrollViewer Name="Store_Scroll" Grid.Column="1" Grid.Row="1" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto" Visibility="Hidden">
             <Grid Name="Grid_Store" Background="LIGHTBLUE" ShowGridLines="True" Grid.Column="1" Grid.Row="1" >
                 <Border Grid.Column="0" Grid.Row="0">
                     <TextBlock Text="ACTION" FontSize="24" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" />

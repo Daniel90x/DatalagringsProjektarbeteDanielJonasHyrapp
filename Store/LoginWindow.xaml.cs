@@ -33,7 +33,7 @@ namespace Store
                 //var next_window = new MainWindow(); // Ändrar om MainWindow till HeadWindow
                 //next_window.Load_Home();
                 next_window.Show();
-                
+                next_window.Load_MyPage(State.User);
                 this.Close();
                 
             }

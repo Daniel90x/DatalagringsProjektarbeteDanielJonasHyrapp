@@ -21,12 +21,23 @@ namespace DatabaseConnection
             }
         }
 
-        /*public static Movie GetMovie(int id) {
-            var ctx = new Context();
+        public static Movie GetMovie(int id) {
+            using var ctx = new Context();
             return ctx.Movies.FirstOrDefault(m => m.Id == id);
-        }*/
+        }
+        public static List<Movie> GetSaleMovies(Customer customer) {
+            using var ctx = new Context();
+            //return ctx.Sales.Include(m => m.Id).Where(c => c.Customer == customer).Select(m => m.Movie).ToList();
+            return ctx.Sales.Where(c => c.Customer == customer).Select(m => m.Movie).ToList();
+        }
 
-    public static Customer GetCustomerByName(string name) // Kallar efter namnen, inlogningsnamn
+        public static List<Rental> GetSales(Customer customer) {
+            using var ctx = new Context();
+            //return ctx.Sales.Include(m => m.Id).Where(c => c.Customer == customer).Select(m => m.Movie).ToList();
+            return ctx.Sales.Where(c => c.Customer == customer).ToList();
+        }
+
+        public static Customer GetCustomerByName(string name) // Kallar efter namnen, inlogningsnamn
         {
             using var ctx = new Context();
             return ctx.Customers.FirstOrDefault(c => c.Name.ToLower() == name.ToLower()); // Ser till så att gör så att lösenordet inte är känsligt för stora och små bokstäver. ToLower
