@@ -41,9 +41,9 @@ namespace Store
                             image.HorizontalAlignment = HorizontalAlignment.Center; // WiP Center avgör placering, kunde ha annat som .right; eller .left; eller .strech;
                             image.VerticalAlignment = VerticalAlignment.Center; // WiP center avgör placering, finns .top; och .bottom; med
                             image.Source = new BitmapImage(new Uri(movie.ImageURL)); // ImageURL Kom ihåg, kallar på bild
-                            //image.Height = 120;
-                            //image.Width = 130;
-                            //image.Stretch = "UniformToFill"; 
+                            image.Height = 120;
+                            image.Width = 85;
+                            image.Stretch = Stretch.Fill; 
                             image.Margin = new Thickness(4, 4, 4, 4);
 
                             Grid_Home.Children.Add(image); // placerar ut bilderna i griden
