@@ -21,6 +21,11 @@ namespace DatabaseConnection
             }
         }
 
+        /*public static Movie GetMovie(int id) {
+            var ctx = new Context();
+            return ctx.Movies.FirstOrDefault(m => m.Id == id);
+        }*/
+
     public static Customer GetCustomerByName(string name) // Kallar efter namnen, inlogningsnamn
         {
             using var ctx = new Context();
