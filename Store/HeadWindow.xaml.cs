@@ -191,7 +191,7 @@ namespace Store {
 
             //Historik
             y = 0;
-            foreach (var sale in sales) {
+            foreach (var sale in API.GetSaleMovies(State.User)) {
                 State.Pick = API.GetMovie(sale.Id);
                 try {
                     var image = new Image() { };
