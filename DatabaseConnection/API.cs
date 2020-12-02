@@ -59,8 +59,9 @@ namespace DatabaseConnection
                 // Om jag inte gör detta så kommer den att försöka updatera databasens Id och cracha.
                 ctx.Entry(customer).State = EntityState.Unchanged;
                 ctx.Entry(movie).State = EntityState.Unchanged;
+                DateTime current_time = DateTime.Now;
 
-                ctx.Add(new Rental() { Date = DateTime.Now, Customer = customer, Movie = movie });
+                ctx.Add(new Rental() { Date = current_time.AddDays(7), Customer = customer, Movie = movie });
                 return ctx.SaveChanges() == 1;
             }
             catch(DbUpdateException e) // Se till att crasha

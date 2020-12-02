@@ -146,37 +146,63 @@ namespace Store {
         }
 
         public void Load_MyPage(Customer customer) {
+
+            //Tillgängliga text
+            int y = 0;
             State.User = customer;
             int userID = State.User.Id;
             State.Sales = API.GetSales(State.User);
+
             foreach (var sale in State.Sales) {
-                MessageBox.Show(sale.Date.ToString(), "Purchase complete!", MessageBoxButton.OK, MessageBoxImage.Information);
+                try {
+                    //sale.Date.ToString()
+                    var string_date = new Label();
+                    var current_time = DateTime.Now;
+                    var time_difference = (sale.Date.ToLocalTime() - current_time);
+                    //MessageBox.Show(time_difference.ToString(), "Purchase complete!", MessageBoxButton.OK, MessageBoxImage.Information);
+                    if (time_difference.Seconds > 0) { 
+                        //MessageBox.Show(time_difference.ToString(), "Purchase complete!", MessageBoxButton.OK, MessageBoxImage.Information);
+                        string_date.Content = "Tid kvar:\n" + time_difference.ToString();
+                        string_date.HorizontalContentAlignment = HorizontalAlignment.Left;
+                        string_date.VerticalContentAlignment = VerticalAlignment.Center;
+                        Grid_My_Page.Children.Add(string_date);
+                        Grid.SetRow(string_date, 1);
+                        Grid.SetColumn(string_date, y);
+                        y += 1;
+                    }
+                } catch (Exception e) when // Undviker från att crasha om tidigare kod inte fungerar.
+                  (e is ArgumentNullException ||
+                   e is System.IO.FileNotFoundException ||
+                   e is UriFormatException) {
+                    continue; // Låter programmet köra vidare
+
+                }
             }
-            //MessageBox.Show(sales[1], "Purchase complete!", MessageBoxButton.OK, MessageBoxImage.Information);
+            
+
             //Get all sales
-            //Tillgängliga
-            int y = 0;
+            //Tillgängliga bilder
+            y = 0;
             foreach(var sale in API.GetSaleMovies(State.User)) {
                 State.Pick = API.GetMovie(sale.Id);
                 try {
-                    var image = new Image() { };
+                    var image = new Image();
+                    var cd = new ColumnDefinition();
+                    cd.Width = new GridLength(200);
+                    
                     image.Cursor = Cursors.Hand;
                     image.MouseUp += Image_MouseUp;
-                    image.HorizontalAlignment = HorizontalAlignment.Center; // WiP Center avgör placering, kunde ha annat som .right; eller .left; eller .strech;
+                    image.HorizontalAlignment = HorizontalAlignment.Right; // WiP Center avgör placering, kunde ha annat som .right; eller .left; eller .strech;
                     image.VerticalAlignment = VerticalAlignment.Center; // WiP center avgör placering, finns .top; och .bottom; med
                     image.Source = new BitmapImage(new Uri(State.Pick.ImageURL)); // ImageURL Kom ihåg, kallar på bild
-
                     image.Height = 130;
                     image.Width = 80;
                     image.Stretch = Stretch.Fill;
                     image.Margin = new Thickness(2, 2, 2, 2);
 
                     Grid_My_Page.Children.Add(image); // placerar ut bilderna i griden
-
-                    //Skapar ny ColumnDefinition per film
-                    var cd = new ColumnDefinition();
-                    cd.Width = new GridLength(200);
                     Grid_My_Page.ColumnDefinitions.Add(cd);
+
                     Grid.SetColumn(image, y);
                     Grid.SetRow(image, 1);
                     y += 1;
