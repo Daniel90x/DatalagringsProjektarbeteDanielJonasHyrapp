@@ -31,7 +31,7 @@ namespace Store
             {
                 var next_window = new HeadWindow(); // Ändrar om MainWindow till HeadWindow
                 //var next_window = new MainWindow(); // Ändrar om MainWindow till HeadWindow
-                next_window.Load_Home();
+                //next_window.Load_Home();
                 next_window.Show();
                 
                 this.Close();

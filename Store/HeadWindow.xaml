@@ -81,7 +81,7 @@
         </Grid>
 
 
-        <ScrollViewer Name="Store_Scroll" Grid.Column="1" Grid.Row="1" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto" Visibility="Hidden">
+        <ScrollViewer Name="Store_Scroll" Grid.Column="1" Grid.Row="1" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto" Visibility="Visible">
             <Grid Name="Grid_Store" Background="LIGHTBLUE" ShowGridLines="True" Grid.Column="1" Grid.Row="1" >
                 <Border Grid.Column="0" Grid.Row="0">
                     <TextBlock Text="ACTION" FontSize="24" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" />
@@ -104,38 +104,28 @@
                 <Border Grid.Column="0" Grid.Row="12">
                     <TextBlock Text="ROMANCE" FontSize="24" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" />
                 </Border>
-
-
-
+                
                 <Grid.RowDefinitions>
-
-                    <RowDefinition Height="50"/>
-
-
+                    <RowDefinition Height="50" Name="Action"/>
                     <RowDefinition Height="100" />
-
-                    <RowDefinition Height="50" />
+                    <RowDefinition Height="50" Name="Drama"/>
                     <RowDefinition Height="100" />
-                    <RowDefinition Height="50" />
+                    <RowDefinition Height="50" Name="Adventure"/>
                     <RowDefinition Height="100" />
-                    <RowDefinition Height="50" />
+                    <RowDefinition Height="50" Name="Comedy"/>
                     <RowDefinition Height="100" />
-                    <RowDefinition Height="50" />
+                    <RowDefinition Height="50" Name="Family"/>
                     <RowDefinition Height="100" />
-                    <RowDefinition Height="50" />
+                    <RowDefinition Height="50" Name="Animation"/>
                     <RowDefinition Height="100" />
-                    <RowDefinition Height="50" />
+                    <RowDefinition Height="50" Name="Romance"/>
                     <RowDefinition Height="100" />
-
-
                 </Grid.RowDefinitions>
 
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition />
-                    <ColumnDefinition />
-                    <ColumnDefinition />
-                    <ColumnDefinition />
-
+                    <ColumnDefinition Width="200"/>
+                    <!--<ColumnDefinition />
+                    <ColumnDefinition />-->
                 </Grid.ColumnDefinitions>
             </Grid>
         </ScrollViewer>
