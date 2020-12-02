@@ -65,25 +65,25 @@ namespace Store
         private void GoMyPage_Click(object sender, RoutedEventArgs e)
         {
             Title.Content = "My Page";
-            Grid_Home.Visibility = Visibility.Hidden;
+            Home_Scroll.Visibility = Visibility.Hidden;
             Grid_My_Page.Visibility = Visibility.Visible;
-            Grid_Store.Visibility = Visibility.Hidden;
+            Store_Scroll.Visibility = Visibility.Hidden;
         }
 
         private void GoStore_Click(object sender, RoutedEventArgs e)
         {
             Title.Content = "Store";
-            Grid_Home.Visibility = Visibility.Hidden;
+            Home_Scroll.Visibility = Visibility.Hidden;
             Grid_My_Page.Visibility = Visibility.Hidden;
-            Grid_Store.Visibility = Visibility.Visible;
+            Store_Scroll.Visibility = Visibility.Visible;
         }
 
         private void GoHome_Click(object sender, RoutedEventArgs e)
         {
             Title.Content = "Home";
-            Grid_Home.Visibility = Visibility.Visible;
+            Home_Scroll.Visibility = Visibility.Visible;
             Grid_My_Page.Visibility = Visibility.Hidden;
-            Grid_Store.Visibility = Visibility.Hidden;
+            Store_Scroll.Visibility = Visibility.Hidden;
         }
     }
 }

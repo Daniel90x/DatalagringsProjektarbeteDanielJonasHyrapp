@@ -31,8 +31,8 @@
         </StackPanel>
 
 
-        <ScrollViewer Name="HomeScroll" Grid.Column="1" Grid.Row="1" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto">
-            <Grid Name="Grid_Home" Background="RED" ShowGridLines="False" Grid.Column="1" Grid.Row="1" Visibility="Visible" >
+        <ScrollViewer Name="Home_Scroll" Grid.Column="1" Grid.Row="1" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto" Visibility="Visible">
+            <Grid Name="Grid_Home" Background="RED" ShowGridLines="False" Grid.Column="1" Grid.Row="1"  >
                 <Grid.RowDefinitions>
                     <RowDefinition Height="100"></RowDefinition>
                     <RowDefinition Height="100"></RowDefinition>
@@ -52,13 +52,93 @@
         </ScrollViewer>
 
         <!-- Ingen Scroll på my page -->
-        <Grid Name="Grid_My_Page" Background="WHITE" Grid.Column="1" Grid.Row="1" Visibility="Hidden">
+        <Grid Name="Grid_My_Page" Background="WHITE" ShowGridLines="True" Grid.Column="1" Grid.Row="1" Visibility="Visible">
+            <Grid.RowDefinitions>
+                <RowDefinition />
+
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+               
+            </Grid.ColumnDefinitions>
 
         </Grid>
 
-        <Grid Name="Grid_Store" Background="BLUE" ShowGridLines="True" Grid.Column="1" Grid.Row="1" Visibility="Hidden">
 
+        <ScrollViewer Name="Store_Scroll" Grid.Column="1" Grid.Row="1" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto" Visibility="Visible">
+            <Grid Name="Grid_Store" Background="LIGHTBLUE" ShowGridLines="True" Grid.Column="1" Grid.Row="1" >
+            <Border Grid.Column="0" Grid.Row="0">
+                <TextBlock Text="ACTION" FontSize="24"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center" />
+            </Border>
+            <Border Grid.Column="0" Grid.Row="2">
+                    <TextBlock Text="DRAMA" FontSize="24"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center" />
+                </Border>
+                <Border Grid.Column="0" Grid.Row="4">
+                    <TextBlock Text="ADVENTURE" FontSize="24"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center" />
+                </Border>
+                <Border Grid.Column="0" Grid.Row="6">
+                    <TextBlock Text="COMEDY" FontSize="24"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center" />
+                </Border>
+                <Border Grid.Column="0" Grid.Row="8">
+                    <TextBlock Text="FAMILY" FontSize="24"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center" />
+                </Border>
+                <Border Grid.Column="0" Grid.Row="10">
+                    <TextBlock Text="ANIMATION" FontSize="24"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center" />
+                </Border>
+                <Border Grid.Column="0" Grid.Row="12">
+                    <TextBlock Text="ROMANCE" FontSize="24"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center" />
+                </Border>
+                
+                
+                
+                <Grid.RowDefinitions>
+                
+                    <RowDefinition Height="50"/>
+               
+
+                <RowDefinition Height="100" />
+                
+                <RowDefinition Height="50" />
+                <RowDefinition Height="100" />
+                <RowDefinition Height="50" />
+                <RowDefinition Height="100" />
+                <RowDefinition Height="50" />
+                <RowDefinition Height="100" />
+                <RowDefinition Height="50" />
+                <RowDefinition Height="100" />
+                <RowDefinition Height="50" />
+                <RowDefinition Height="100" />
+                <RowDefinition Height="50" />
+                <RowDefinition Height="100" />
+
+                
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+
+            </Grid.ColumnDefinitions>
         </Grid>
+            </ScrollViewer>
+       
 
 
     </Grid>
