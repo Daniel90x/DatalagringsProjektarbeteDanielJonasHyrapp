@@ -18,8 +18,8 @@
 
         <Ellipse Grid.Column="0" Grid.Row="0">
             <Ellipse.Fill>
-        <ImageBrush ImageSource="images/sf_anytime.png" Stretch="UniformToFill"></ImageBrush>
-                </Ellipse.Fill>
+                <ImageBrush ImageSource="images/sf_anytime.png" Stretch="UniformToFill"></ImageBrush>
+            </Ellipse.Fill>
         </Ellipse>
 
         <Label Grid.Column="1" Grid.Row="0" Name="Title" Content="Home" FontSize="40" HorizontalContentAlignment="Center"></Label>
@@ -33,37 +33,35 @@
 
         <ScrollViewer Name="HomeScroll" Grid.Column="1" Grid.Row="1">
             <Grid Name="Grid_Home" Background="RED" ShowGridLines="True" Grid.Column="1" Grid.Row="1" Visibility="Visible">
-            <Grid.RowDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="100"></RowDefinition>
+                    <RowDefinition Height="100"></RowDefinition>
+                    <RowDefinition Height="100"></RowDefinition>
+                    <RowDefinition Height="100"></RowDefinition>
+                    <RowDefinition Height="100"></RowDefinition>
+                </Grid.RowDefinitions>
 
-                <RowDefinition Height="100"></RowDefinition>
-                <RowDefinition Height="100"></RowDefinition>
-                <RowDefinition Height="100"></RowDefinition>
-                <RowDefinition Height="100"></RowDefinition>
-                <RowDefinition Height="100"></RowDefinition>
-
-            </Grid.RowDefinitions>
-
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition />
-                <ColumnDefinition />
-                <ColumnDefinition />
-                <ColumnDefinition />
-                <ColumnDefinition />
-            </Grid.ColumnDefinitions>
-        </Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+            </Grid>
         </ScrollViewer>
 
-
+        <!-- Ingen Scroll på my page -->
         <Grid Name="Grid_My_Page" Background="WHITE" Grid.Column="1" Grid.Row="1" Visibility="Hidden">
 
         </Grid>
 
-        <ScrollViewer Name="TableContent" Grid.Column="1" Grid.Row="1">
+        <ScrollViewer Name="StoreScroll" Grid.Column="1" Grid.Row="1">
             <Grid Name="Grid_Store" Background="BLUE" ShowGridLines="True" Grid.Column="1" Grid.Row="1" Visibility="Hidden">
-            
-                
+
             </Grid>
         </ScrollViewer>
+
 
 
     </Grid>

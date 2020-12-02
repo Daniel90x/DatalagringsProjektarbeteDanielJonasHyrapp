@@ -37,7 +37,7 @@ namespace Store
                         {
                             var image = new Image() { };
                             image.Cursor = Cursors.Hand; // Gör så att pekarn blir till en hand när den håller över filmernas posters
-                     //       image.MouseUp += Image_MouseUp;
+                            //image.MouseUp += Image_MouseUp;
                             image.HorizontalAlignment = HorizontalAlignment.Center; // WiP Center avgör placering, kunde ha annat som .right; eller .left; eller .strech;
                             image.VerticalAlignment = VerticalAlignment.Center; // WiP center avgör placering, finns .top; och .bottom; med
                             image.Source = new BitmapImage(new Uri(movie.ImageURL)); // ImageURL Kom ihåg, kallar på bild
@@ -57,53 +57,10 @@ namespace Store
                             continue; // Låter programmet köra vidare
 
                         }
-
-
-
-
-
-
-
-
-
-
                     }
-
-
-
-
-
-
-
-
-
                 }
-
-
-
-
-
-
-
-
-
-
             }
-
-
-
         }
-
-
-
-
-
-
-
-
-
-
-
 
         private void GoMyPage_Click(object sender, RoutedEventArgs e)
         {
