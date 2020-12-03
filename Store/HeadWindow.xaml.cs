@@ -18,11 +18,13 @@ namespace Store {
     /// </summary>
     public partial class HeadWindow : Window {
         public HeadWindow() {
+            //var movie_index = DatabaseConnection();
             InitializeComponent();
         }
 
         private void GoMyPage_Click(object sender, RoutedEventArgs e) {
 
+            Load_MyPage(State.User);
             Title.Content = "My Page";
             Home_Scroll.Visibility = Visibility.Hidden;
             //Grid_My_Page.Visibility = Visibility.Visible;
@@ -31,13 +33,7 @@ namespace Store {
         }
 
         private void GoStore_Click(object sender, RoutedEventArgs e) {
-            Load_Store("Action", 1);
-            Load_Store("Drama", 3);
-            Load_Store("Adventure", 5);
-            Load_Store("Comedy", 7);
-            Load_Store("Family", 9);
-            Load_Store("Animation", 11);
-            Load_Store("Romance", 13);
+            Load_Store();
             Title.Content = "Store";
             Home_Scroll.Visibility = Visibility.Hidden;
             //Grid_Home.Visibility = Visibility.Hidden;
@@ -52,7 +48,7 @@ namespace Store {
             //Grid_My_Page.Visibility = Visibility.Hidden;
             Store_Scroll.Visibility = Visibility.Hidden;
             My_Page_Scroll.Visibility = Visibility.Hidden;
-            Load_Home();
+            //Load_Home();
 
         }
 
@@ -65,21 +61,22 @@ namespace Store {
                         var movie = State.Movies[i];
 
                         try {
-                            var image = new Image() { };
-                            image.Cursor = Cursors.Hand; // Gör så att pekarn blir till en hand när den håller över filmernas posters
-                            image.MouseUp += Image_MouseUp;
-                            image.HorizontalAlignment = HorizontalAlignment.Center; // WiP Center avgör placering, kunde ha annat som .right; eller .left; eller .strech;
-                            image.VerticalAlignment = VerticalAlignment.Center; // WiP center avgör placering, finns .top; och .bottom; med
-                            image.Source = new BitmapImage(new Uri(movie.ImageURL)); // ImageURL Kom ihåg, kallar på bild
+                            var home_image = new Image() { };
+                            home_image.MaxWidth = movie.Id;
+                            home_image.Cursor = Cursors.Hand; // Gör så att pekarn blir till en hand när den håller över filmernas posters
+                            home_image.MouseUp += Image_MouseUp;
+                            home_image.HorizontalAlignment = HorizontalAlignment.Center; // WiP Center avgör placering, kunde ha annat som .right; eller .left; eller .strech;
+                            home_image.VerticalAlignment = VerticalAlignment.Center; // WiP center avgör placering, finns .top; och .bottom; med
+                            home_image.Source = new BitmapImage(new Uri(movie.ImageURL)); // ImageURL Kom ihåg, kallar på bild
 
-                            image.Height = 200;
-                            image.Width = 150;
-                            image.Stretch = Stretch.Fill;
-                            image.Margin = new Thickness(2, 2, 2, 2);
+                            home_image.Height = 200;
+                            home_image.Width = 150;
+                            home_image.Stretch = Stretch.Fill;
+                            home_image.Margin = new Thickness(2, 2, 2, 2);
 
-                            Grid_Home.Children.Add(image); // placerar ut bilderna i griden
-                            Grid.SetRow(image, y); //rad y
-                            Grid.SetColumn(image, x); //column x
+                            Grid_Home.Children.Add(home_image); // placerar ut bilderna i griden
+                            Grid.SetRow(home_image, y); //rad y
+                            Grid.SetColumn(home_image, x); //column x
                         } catch (Exception e) when // Undviker från att crasha om tidigare kod inte fungerar.
                               (e is ArgumentNullException ||
                                e is System.IO.FileNotFoundException ||
@@ -92,61 +89,112 @@ namespace Store {
             }
         }
 
-        public void Load_Store(string genre, int index) {
+        public void Load_Store() {
             State.Movies = API.GetMovies();
-
+            //State.Pick = API.GetMovie(movie.Id);
             int total_movies = 0;
-
-            List<Movie> movieList = new List<Movie>();
-
+            int action_y = 0;
+            int drama_y = 0;
+            int adventure_y = 0;
+            int comedy_y = 0;
+            int family_y = 0;
+            int animation_y = 0;
+            int romance_y = 0;
             //Loop som lägger till alla genres som stämmer överens med 'string genre'
-            foreach (var e in State.Movies) {
+            foreach (var movie in State.Movies) {
                 if (total_movies < 30) {
-                    List<string> genres = new List<string>(e.Genre.ToLower().Split("|"));
-                    if (genres.Contains(genre.ToLower())) {
-                        movieList.Add(e);
+                    
+                    List<string> genres = new List<string>(movie.Genre.ToLower().Split("|"));
+
+                    foreach (var genre in genres) {
+                        var store_image = new Image { };
+                        store_image.MaxWidth = movie.Id;
+                        store_image.Cursor = Cursors.Hand;
+                        store_image.MouseUp += Image_MouseUp;
+                        store_image.HorizontalAlignment = HorizontalAlignment.Center; // WiP Center avgör placering, kunde ha annat som .right; eller .left; eller .strech;
+                        store_image.VerticalAlignment = VerticalAlignment.Center; // WiP center avgör placering, finns .top; och .bottom; med
+                        store_image.Source = new BitmapImage(new Uri(movie.ImageURL)); // ImageURL Kom ihåg, kallar på bild
+                        store_image.Height = 130;
+                        store_image.Width = 80;
+                        store_image.Stretch = Stretch.Fill;
+                        store_image.Margin = new Thickness(2, 2, 2, 2);
+
+                        var cd = new ColumnDefinition(); //Skapa ny ColumnDefinition att fylla ut
+                        if (genre.ToLower() == "action") {
+                            Grid_Store.ColumnDefinitions.Add(cd);
+                            cd.Width = new GridLength(200);
+                            //cd.MaxWidth = Convert.ToDouble(movie.Id);
+                            cd.Name = ("test"+movie.Id.ToString());
+                            //cd.Max = movie.Id.ToString();
+                            Grid_Store.Children.Add(store_image); //Skapa bilden
+                            Grid.SetRow(store_image, 1);
+                            Grid.SetColumn(store_image, action_y);
+                            action_y += 1;
+                        }
+                        if (genre.ToLower() == "drama") {
+                            Grid_Store.ColumnDefinitions.Add(cd);
+                            cd.Width = new GridLength(200);
+                            Grid_Store.Children.Add(store_image); //Skapa bilden
+                            Grid.SetColumn(store_image, drama_y);
+                            Grid.SetRow(store_image, 3);
+                            drama_y += 1;
+                        }
+                        if (genre.ToLower() == "adventure") {
+                            Grid_Store.ColumnDefinitions.Add(cd);
+                            cd.Width = new GridLength(200);
+                            Grid_Store.Children.Add(store_image); //Skapa bilden
+                            Grid.SetColumn(store_image, adventure_y);
+                            Grid.SetRow(store_image, 5);
+                            adventure_y += 1;
+                        }
+                        if (genre.ToLower() == "comedy") {
+                            Grid_Store.ColumnDefinitions.Add(cd);
+                            cd.Width = new GridLength(200);
+                            Grid_Store.Children.Add(store_image); //Skapa bilden
+                            Grid.SetColumn(store_image, comedy_y);
+                            Grid.SetRow(store_image, 7);
+                            comedy_y += 1;
+                        }
+                        if (genre.ToLower() == "family") {
+                            Grid_Store.ColumnDefinitions.Add(cd);
+                            cd.Width = new GridLength(200);
+                            Grid_Store.Children.Add(store_image); //Skapa bilden
+                            Grid.SetColumn(store_image, family_y);
+                            Grid.SetRow(store_image, 9);
+                            family_y += 1;
+                        }
+                        if (genre.ToLower() == "animation") {
+                            Grid_Store.ColumnDefinitions.Add(cd);
+                            cd.Width = new GridLength(200);
+                            Grid_Store.Children.Add(store_image); //Skapa bilden
+                            Grid.SetColumn(store_image, animation_y);
+                            Grid.SetRow(store_image, 11);
+                            animation_y += 1;
+                        }
+                        if (genre.ToLower() == "romance") {
+                            Grid_Store.ColumnDefinitions.Add(cd);
+                            cd.Width = new GridLength(200);
+                            Grid_Store.Children.Add(store_image); //Skapa bilden
+                            Grid.SetColumn(store_image, romance_y);
+                            Grid.SetRow(store_image, 13);
+                            romance_y += 1;
+                        }
                     }
+
+                    
+
+
                     total_movies += 1;
                 }
             }
-            int y = 0;
-            foreach (var movie in movieList) {
-                try {
-
-                    var image = new Image() { };
-                    var cd = new ColumnDefinition();
-                    Grid_Store.ColumnDefinitions.Add(cd);
-                    image.Cursor = Cursors.Hand;
-                    image.MouseUp += Image_MouseUp;
-                    image.HorizontalAlignment = HorizontalAlignment.Center; // WiP Center avgör placering, kunde ha annat som .right; eller .left; eller .strech;
-                    image.VerticalAlignment = VerticalAlignment.Center; // WiP center avgör placering, finns .top; och .bottom; med
-                    image.Source = new BitmapImage(new Uri(movie.ImageURL)); // ImageURL Kom ihåg, kallar på bild
-
-                    image.Height = 130;
-                    image.Width = 80;
-                    image.Stretch = Stretch.Fill;
-                    image.Margin = new Thickness(2, 2, 2, 2);
-
-                    cd.Width = new GridLength(200);
-                    //Grid_Store.ColumnDefinitions.Add(cd);
-                    Grid_Store.Children.Add(image); // placerar ut bilderna i griden
-
-                    //Skapar ny ColumnDefinition per film
-                    Grid.SetColumn(image, y);
-                    Grid.SetRow(image, index);
-                    y += 1;
-                } catch (Exception e) when // Undviker från att crasha om tidigare kod inte fungerar.
-                      (e is ArgumentNullException ||
-                       e is System.IO.FileNotFoundException ||
-                       e is UriFormatException) {
-                    continue; // Låter programmet köra vidare
-
-                }
-            }
+            
         }
 
         public void Load_MyPage(Customer customer) {
 
+            //KAOS TEXT LÄGGER SIG ÖVER VARANDRA
+            //KAOS TEXT LÄGGER SIG ÖVER VARANDRA
+            //KAOS TEXT LÄGGER SIG ÖVER VARANDRA
             //Tillgängliga text
             int y = 0;
             State.User = customer;
@@ -162,10 +210,7 @@ namespace Store {
                 if (time_difference.Seconds > 0) {
                     State.Movies = API.GetSaleMovies(State.User);
                     try {
-                        //sale.Date.ToString()
-                        //MessageBox.Show(time_difference.ToString(), "Purchase complete!", MessageBoxButton.OK, MessageBoxImage.Information);
                         if (time_difference.Seconds > 0) {
-                            //MessageBox.Show(time_difference.ToString(), "Purchase complete!", MessageBoxButton.OK, MessageBoxImage.Information);
                             string_date.Content = "Tid kvar:\n" + time_difference.ToString();
                             string_date.HorizontalContentAlignment = HorizontalAlignment.Left;
                             string_date.VerticalContentAlignment = VerticalAlignment.Center;
@@ -173,6 +218,7 @@ namespace Store {
                             Grid.SetRow(string_date, 1);
                             Grid.SetColumn(string_date, y);
                             y += 1;
+                            
                         }
                     } catch (Exception e) when // Undviker från att crasha om tidigare kod inte fungerar.
                       (e is ArgumentNullException ||
@@ -197,7 +243,6 @@ namespace Store {
                     cd.Width = new GridLength(200);
 
                     image.Cursor = Cursors.Hand;
-                    image.MouseUp += Image_MouseUp;
                     image.HorizontalAlignment = HorizontalAlignment.Right; // WiP Center avgör placering, kunde ha annat som .right; eller .left; eller .strech;
                     image.VerticalAlignment = VerticalAlignment.Center; // WiP center avgör placering, finns .top; och .bottom; med
                     image.Source = new BitmapImage(new Uri(State.Pick.ImageURL)); // ImageURL Kom ihåg, kallar på bild
@@ -209,16 +254,16 @@ namespace Store {
 
                     Grid_My_Page.Children.Add(image); // placerar ut bilderna i griden
 
-
                     Grid.SetColumn(image, y);
                     Grid.SetRow(image, 1);
                     y += 1;
+
                 } catch (Exception e) when // Undviker från att crasha om tidigare kod inte fungerar.
                       (e is ArgumentNullException ||
                        e is System.IO.FileNotFoundException ||
                        e is UriFormatException) {
                     continue; // Låter programmet köra vidare
-
+                    
                 }
             }
 
@@ -229,7 +274,6 @@ namespace Store {
                 try {
                     var image = new Image() { };
                     image.Cursor = Cursors.Hand;
-                    image.MouseUp += Image_MouseUp;
                     image.HorizontalAlignment = HorizontalAlignment.Center; // WiP Center avgör placering, kunde ha annat som .right; eller .left; eller .strech;
                     image.VerticalAlignment = VerticalAlignment.Center; // WiP center avgör placering, finns .top; och .bottom; med
                     image.Source = new BitmapImage(new Uri(State.Pick.ImageURL)); // ImageURL Kom ihåg, kallar på bild
@@ -248,6 +292,7 @@ namespace Store {
                     Grid.SetColumn(image, y);
                     Grid.SetRow(image, 3);
                     y += 1;
+                    image.ReleaseMouseCapture();
                 } catch (Exception e) when // Undviker från att crasha om tidigare kod inte fungerar.
                       (e is ArgumentNullException ||
                        e is System.IO.FileNotFoundException ||
@@ -265,19 +310,18 @@ namespace Store {
         //Hyra film
         private void Image_MouseUp(object sender, MouseButtonEventArgs e) // Känner av vad användaren klickar på
         {
+
+            //Tar MaxWidth från image i antingen store eller home
+            //beroende från vart man klickar på bilden någonstans
+            //Man kunde inte ha siffror i Name så fick komma på en
+            //paniklösning på rad 111 & 65
+            var movieid = sender.GetType().GetProperty(MaxWidthProperty.ToString()).GetValue(sender, null).ToString();    //.GetProperty(MaxWidth.ToString()).ToString();//.GetValue(Name).ToString();       //.GetProperty(Name.ToString()).ToString();
+            
             var x = Grid.GetColumn(sender as UIElement);
             var y = Grid.GetRow(sender as UIElement);
 
-            int i = y * Grid_Store.ColumnDefinitions.Count + x;
-            /*try {
-                State.Pick = State.Movies[i];
-            } catch (System.ArgumentOutOfRangeException) {
-                //
-            }*/
-            State.Pick = State.Movies[i];
-            //    MessageBox.Show(i.ToString() + " " +  x.ToString() + " " + y.ToString() + " " + State.Pick.Title, "Purchase complete!", MessageBoxButton.OK, MessageBoxImage.Information);
-            //System.ArgumentOutOfRangeException
-            if (API.RegisterSale(State.User, State.Pick)) 
+
+            if (API.RegisterSale(State.User, API.GetMovie(int.Parse(movieid)))) 
             {
                 Load_MyPage(State.User);
                 MessageBox.Show("Purchase complete!", "Purchase complete!", MessageBoxButton.OK, MessageBoxImage.Information); }

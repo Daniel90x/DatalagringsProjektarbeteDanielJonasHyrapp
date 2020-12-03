@@ -31,7 +31,6 @@
             <Button Height="100" Margin="0,0,0,10" Click="GoStore_Click">Store</Button>
         </StackPanel>
 
-
         <ScrollViewer Name="Home_Scroll" Grid.Column="1" Grid.Row="1" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto" Visibility="Visible">
             <Grid Name="Grid_Home" Background="RED" ShowGridLines="False" Grid.Column="1" Grid.Row="1"  >
                 <Grid.RowDefinitions>
