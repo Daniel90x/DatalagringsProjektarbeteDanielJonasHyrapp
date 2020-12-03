@@ -18,12 +18,11 @@ namespace Store {
     /// </summary>
     public partial class HeadWindow : Window {
         public HeadWindow() {
-            //var movie_index = DatabaseConnection();
             InitializeComponent();
         }
 
         private void GoMyPage_Click(object sender, RoutedEventArgs e) {
-
+            Grid_My_Page.Children.Clear();
             Load_MyPage(State.User);
             Title.Content = "My Page";
             Home_Scroll.Visibility = Visibility.Hidden;
@@ -43,13 +42,14 @@ namespace Store {
         }
 
         private void GoHome_Click(object sender, RoutedEventArgs e) {
+            //Rensa för att undvika memoryleak
+            Grid_Home.Children.Clear();
+            Load_Home();
             Title.Content = "Home";
             Home_Scroll.Visibility = Visibility.Visible;
             //Grid_My_Page.Visibility = Visibility.Hidden;
             Store_Scroll.Visibility = Visibility.Hidden;
             My_Page_Scroll.Visibility = Visibility.Hidden;
-            //Load_Home();
-
         }
 
         public void Load_Home() {
@@ -91,7 +91,6 @@ namespace Store {
 
         public void Load_Store() {
             State.Movies = API.GetMovies();
-            //State.Pick = API.GetMovie(movie.Id);
             int total_movies = 0;
             int action_y = 0;
             int drama_y = 0;
@@ -180,10 +179,6 @@ namespace Store {
                             romance_y += 1;
                         }
                     }
-
-                    
-
-
                     total_movies += 1;
                 }
             }
@@ -198,14 +193,11 @@ namespace Store {
             //Tillgängliga text
             int y = 0;
             State.User = customer;
-            int userID = State.User.Id;
             State.Sales = API.GetSales(State.User);
-            //var string_date = new Label();
             var current_time = DateTime.Now;
-            var string_date = new Label();
-
+            
             foreach (var sale in State.Sales) {
-                string_date = new Label();
+                var string_date = new Label();
                 var time_difference = (sale.Date.ToLocalTime() - current_time);
                 if (time_difference.Seconds > 0) {
                     State.Movies = API.GetSaleMovies(State.User);
@@ -218,14 +210,12 @@ namespace Store {
                             Grid.SetRow(string_date, 1);
                             Grid.SetColumn(string_date, y);
                             y += 1;
-                            
                         }
                     } catch (Exception e) when // Undviker från att crasha om tidigare kod inte fungerar.
                       (e is ArgumentNullException ||
                        e is System.IO.FileNotFoundException ||
                        e is UriFormatException) {
                         continue; // Låter programmet köra vidare
-
                     }
                 }
             }
