@@ -200,7 +200,7 @@ namespace Store {
                     State.Movies = API.GetSaleMovies(State.User);
                     try {
                         if (time_difference.Seconds > 0) {
-                            string_date.Content = "Tid kvar:\n" + time_difference.ToString();
+                            string_date.Content = "Tid kvar:\n" + time_difference.ToString(@"d\.h\:mm\:ss"); // La in tidformat i "ToSTRING"
                             string_date.HorizontalContentAlignment = HorizontalAlignment.Left;
                             string_date.VerticalContentAlignment = VerticalAlignment.Center;
                             Grid_My_Page.Children.Add(string_date);
