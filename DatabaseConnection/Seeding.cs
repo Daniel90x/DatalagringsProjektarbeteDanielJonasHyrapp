@@ -18,7 +18,7 @@ namespace DatabaseConnection
                 ctx.AddRange(new List<Customer> {
                     new Customer { Name = "Björn" , Email = "björn@gmail.com", Password = "123", PhoneNumber = 087020090}, // Lägger till personer med rättigheter för att logga in
                     new Customer { Name = "Robin" , Email = "robin85@hotmail.com", Password = "321", PhoneNumber = 061233152},
-                    new Customer { Name = "Kalle",  Email = "kalle@outlook.com", Password = "1234321" PhoneNumber = 061233526},
+                    new Customer { Name = "Kalle",  Email = "kalle@outlook.com", Password = "1234321", PhoneNumber = 061233526},
                 });
 
                 // Här laddas data in från SeedData foldern för att fylla ut Movies tabellen
