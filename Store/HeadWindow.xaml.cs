@@ -22,6 +22,7 @@ namespace Store {
         }
 
         private void GoMyPage_Click(object sender, RoutedEventArgs e) {
+            //Rensa alla childs i grid_my_page
             Grid_My_Page.Children.Clear();
             Load_MyPage(State.User);
             Title.Content = "My Page";
@@ -296,10 +297,12 @@ namespace Store {
         private void Image_MouseUp(object sender, MouseButtonEventArgs e) // Känner av vad användaren klickar på
         {
 
-            //Tar MaxWidth från image i antingen store eller home
+            //Använder MaxWidth från image i antingen store eller home
             //beroende från vart man klickar på bilden någonstans
-            //Man kunde inte ha siffror i Name så fick komma på en
-            //paniklösning på rad 110~ & 64~
+            //som en variabel. MaxWidth blir movieid beroende på vilken
+            //film man klickar på, Man kunde inte ha siffror i Name så
+            //fick komma på en paniklösning
+
             var movieid = sender.GetType().GetProperty(MaxWidthProperty.ToString()).GetValue(sender, null).ToString();    //.GetProperty(MaxWidth.ToString()).ToString();//.GetValue(Name).ToString();       //.GetProperty(Name.ToString()).ToString();
             
             var x = Grid.GetColumn(sender as UIElement);
