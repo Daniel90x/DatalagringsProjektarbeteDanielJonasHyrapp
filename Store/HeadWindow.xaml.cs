@@ -42,8 +42,6 @@ namespace Store {
         }
 
         private void GoHome_Click(object sender, RoutedEventArgs e) {
-            //Rensa för att undvika memoryleak
-            Grid_Home.Children.Clear();
             Load_Home();
             Title.Content = "Home";
             Home_Scroll.Visibility = Visibility.Visible;
@@ -117,6 +115,7 @@ namespace Store {
                         store_image.Width = 80;
                         store_image.Stretch = Stretch.Fill;
                         store_image.Margin = new Thickness(2, 2, 2, 2);
+                        
 
                         var cd = new ColumnDefinition(); //Skapa ny ColumnDefinition att fylla ut
                         if (genre.ToLower() == "action") {
@@ -187,9 +186,6 @@ namespace Store {
 
         public void Load_MyPage(Customer customer) {
 
-            //KAOS TEXT LÄGGER SIG ÖVER VARANDRA
-            //KAOS TEXT LÄGGER SIG ÖVER VARANDRA
-            //KAOS TEXT LÄGGER SIG ÖVER VARANDRA
             //Tillgängliga text
             int y = 0;
             State.User = customer;
@@ -231,7 +227,6 @@ namespace Store {
                     var cd = new ColumnDefinition();
                     Grid_My_Page.ColumnDefinitions.Add(cd);
                     cd.Width = new GridLength(200);
-
                     image.Cursor = Cursors.Hand;
                     image.HorizontalAlignment = HorizontalAlignment.Right; // WiP Center avgör placering, kunde ha annat som .right; eller .left; eller .strech;
                     image.VerticalAlignment = VerticalAlignment.Center; // WiP center avgör placering, finns .top; och .bottom; med
@@ -294,7 +289,7 @@ namespace Store {
 
 
             //DEbug
-            //MessageBox.Show(State.User.Id.ToString(), "Purchase complete!", MessageBoxButton.OK, MessageBoxImage.Information);
+            //MessageBox.Show(State.User.Id.ToString(), "Debug", MessageBoxButton.OK, MessageBoxImage.Information);
         }
 
         //Hyra film
@@ -304,7 +299,7 @@ namespace Store {
             //Tar MaxWidth från image i antingen store eller home
             //beroende från vart man klickar på bilden någonstans
             //Man kunde inte ha siffror i Name så fick komma på en
-            //paniklösning på rad 111 & 65
+            //paniklösning på rad 110~ & 64~
             var movieid = sender.GetType().GetProperty(MaxWidthProperty.ToString()).GetValue(sender, null).ToString();    //.GetProperty(MaxWidth.ToString()).ToString();//.GetValue(Name).ToString();       //.GetProperty(Name.ToString()).ToString();
             
             var x = Grid.GetColumn(sender as UIElement);
