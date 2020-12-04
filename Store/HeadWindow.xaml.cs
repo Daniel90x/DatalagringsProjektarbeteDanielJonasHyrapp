@@ -23,7 +23,7 @@ namespace Store {
 
         private void GoMyPage_Click(object sender, RoutedEventArgs e) {
             //Rensa alla childs i grid_my_page
-            Grid_My_Page.Children.Clear();
+            Grid_My_Page.Children.Clear();       //  Bort klockslagen och "Tillgängliga" och "Historik" texten!
             Load_MyPage(State.User);
             Title.Content = "My Page";
             Home_Scroll.Visibility = Visibility.Hidden;
