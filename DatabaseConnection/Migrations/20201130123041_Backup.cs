@@ -6,12 +6,12 @@ namespace DatabaseConnection.Migrations
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-
+            migrationBuilder.Sql($"DBCC CHECKIDENT('Movies', RESEED, 5000)");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-
+            
         }
     }
 }

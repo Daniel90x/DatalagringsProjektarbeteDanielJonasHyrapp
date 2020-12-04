@@ -24,7 +24,6 @@ namespace DatabaseConnection
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            
         }
     }
 }
