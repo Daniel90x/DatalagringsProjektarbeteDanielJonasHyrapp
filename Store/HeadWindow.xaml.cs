@@ -23,7 +23,7 @@ namespace Store {
 
         private void GoMyPage_Click(object sender, RoutedEventArgs e) {
             //Rensa alla childs i grid_my_page
-            Grid_My_Page.Children.Clear();       //  Bort klockslagen och "Tillgängliga" och "Historik" texten!
+            Grid_My_Page.Children.Clear(); //  Bort klockslagen och "Tillgängliga" och "Historik" texten
             Load_MyPage(State.User);
             Title.Content = "My Page";
             Home_Scroll.Visibility = Visibility.Hidden;
@@ -192,7 +192,25 @@ namespace Store {
             State.User = customer;
             State.Sales = API.GetSales(State.User);
             var current_time = DateTime.Now;
-            
+            var textBlock = new TextBlock();
+            textBlock.Text = "Tillgängliga:"; //HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0"
+            textBlock.FontSize = 15;
+            textBlock.HorizontalAlignment = HorizontalAlignment.Left;
+            textBlock.VerticalAlignment = VerticalAlignment.Center;
+            // textBlock.Margin = Margin thickness10,10,0,0;
+            Grid_My_Page.Children.Add(textBlock);
+            Grid.SetRow(textBlock, 0);
+            Grid.SetColumn(textBlock, 0);
+            textBlock = new TextBlock();
+            textBlock.Text = "Historik:";
+            textBlock.FontSize = 15;
+            textBlock.HorizontalAlignment = HorizontalAlignment.Left;
+            textBlock.VerticalAlignment = VerticalAlignment.Center;
+            Grid_My_Page.Children.Add(textBlock);     
+            Grid.SetRow(textBlock, 2);
+            Grid.SetColumn(textBlock, 0);
+
+
             foreach (var sale in State.Sales) {
                 var string_date = new Label();
                 var time_difference = (sale.Date.ToLocalTime() - current_time);
@@ -228,16 +246,13 @@ namespace Store {
                     var cd = new ColumnDefinition();
                     Grid_My_Page.ColumnDefinitions.Add(cd);
                     cd.Width = new GridLength(200);
-                    image.Cursor = Cursors.Hand;
-                    image.HorizontalAlignment = HorizontalAlignment.Right; // WiP Center avgör placering, kunde ha annat som .right; eller .left; eller .strech;
-                    image.VerticalAlignment = VerticalAlignment.Center; // WiP center avgör placering, finns .top; och .bottom; med
-                    image.Source = new BitmapImage(new Uri(State.Pick.ImageURL)); // ImageURL Kom ihåg, kallar på bild
+                    image.HorizontalAlignment = HorizontalAlignment.Right; 
+                    image.VerticalAlignment = VerticalAlignment.Center; 
+                    image.Source = new BitmapImage(new Uri(State.Pick.ImageURL)); 
                     image.Height = 130;
                     image.Width = 80;
                     image.Stretch = Stretch.Fill;
                     image.Margin = new Thickness(2, 2, 2, 2);
-
-
                     Grid_My_Page.Children.Add(image); // placerar ut bilderna i griden
 
                     Grid.SetColumn(image, y);
@@ -259,10 +274,9 @@ namespace Store {
                 State.Pick = API.GetMovie(sale.Id);
                 try {
                     var image = new Image() { };
-                    image.Cursor = Cursors.Hand;
-                    image.HorizontalAlignment = HorizontalAlignment.Center; // WiP Center avgör placering, kunde ha annat som .right; eller .left; eller .strech;
-                    image.VerticalAlignment = VerticalAlignment.Center; // WiP center avgör placering, finns .top; och .bottom; med
-                    image.Source = new BitmapImage(new Uri(State.Pick.ImageURL)); // ImageURL Kom ihåg, kallar på bild
+                    image.HorizontalAlignment = HorizontalAlignment.Center; 
+                    image.VerticalAlignment = VerticalAlignment.Center; 
+                    image.Source = new BitmapImage(new Uri(State.Pick.ImageURL));
 
                     image.Height = 130;
                     image.Width = 80;
