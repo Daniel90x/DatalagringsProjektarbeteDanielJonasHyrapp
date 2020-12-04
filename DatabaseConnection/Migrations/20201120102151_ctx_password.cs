@@ -6,9 +6,6 @@ namespace DatabaseConnection.Migrations
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropIndex(
-                name: "IX_Customers_Email",
-                table: "Customers");
 
             migrationBuilder.AlterColumn<string>(
                 name: "Email",
