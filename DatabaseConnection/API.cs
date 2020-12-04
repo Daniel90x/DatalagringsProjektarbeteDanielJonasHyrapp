@@ -33,7 +33,7 @@ namespace DatabaseConnection
 
         public static List<Rental> GetSales(Customer customer) {
             using var ctx = new Context();
-            return ctx.Sales.Where(c => c.Customer == customer).ToList();
+            return ctx.Sales.Where(c => c.Customer == customer).Include(m => m.Movie).ToList();
         }
 
         public static Customer GetCustomerByName(string name) // Kallar efter namnen, inlogningsnamn
