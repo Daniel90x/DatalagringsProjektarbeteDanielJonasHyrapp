@@ -56,10 +56,10 @@
         <ScrollViewer Name="My_Page_Scroll" Grid.Column="1" Grid.Row="1" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto" Visibility="Hidden">
         <Grid Name="Grid_My_Page" Background="WHITE" ShowGridLines="True" Grid.Column="1" Grid.Row="1" >
             <Border Grid.Column="0" Grid.Row="0">
-                <TextBlock Text="Tillgängliga:" FontSize="15"  HorizontalAlignment="Left" VerticalAlignment="Center"  />
+                <TextBlock Text="Tillgängliga:" FontSize="15"  HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0" />
             </Border>
             <Border Grid.Column="0" Grid.Row="2">
-                <TextBlock Text="Historik:" FontSize="15"  HorizontalAlignment="Left" VerticalAlignment="Center"  />
+                <TextBlock Text="Historik:" FontSize="15"  HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0" />
             </Border>
             <Grid.RowDefinitions>
                 <RowDefinition Height="50" />
